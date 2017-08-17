@@ -48,6 +48,9 @@ public class ModBlocks {
 
     @GameRegistry.ObjectHolder("modtut:statetexturedblock")
     public static StateTexturedBlock stateTexturedBlock;
+    
+    @GameRegistry.ObjectHolder("modtut:silverblock")
+    public static SilverBlock silverBlock;
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
@@ -62,6 +65,7 @@ public class ModBlocks {
         testContainerBlock.initModel();
         ab.initModel();
         lightningtrap.initModel();
+        silverBlock.initModel();   
     }
 
     @SideOnly(Side.CLIENT)
