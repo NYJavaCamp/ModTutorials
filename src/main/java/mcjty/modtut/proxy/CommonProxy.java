@@ -1,7 +1,23 @@
 package mcjty.modtut.proxy;
 
-import mcjty.modtut.*;
-import mcjty.modtut.blocks.*;
+
+import java.io.File;
+
+import mcjty.modtut.Config;
+import mcjty.modtut.ModBlocks;
+import mcjty.modtut.ModDimensions;
+import mcjty.modtut.ModEntities;
+import mcjty.modtut.ModTut;
+import mcjty.modtut.blocks.Ab;
+import mcjty.modtut.blocks.FirstBlock;
+import mcjty.modtut.blocks.JadeBlock;
+import mcjty.modtut.blocks.LightningTrap;
+import mcjty.modtut.blocks.ModelBlock;
+import mcjty.modtut.blocks.MultiTexturedBlock;
+import mcjty.modtut.blocks.NLetterBlock;
+import mcjty.modtut.blocks.SilverBlock;
+import mcjty.modtut.blocks.SimpleTexturedBlock;
+import mcjty.modtut.blocks.StateTexturedBlock;
 import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.blinkingblock.BlinkingTileEntity;
@@ -12,14 +28,17 @@ import mcjty.modtut.blocks.itempedestal.PedestalTileEntity;
 import mcjty.modtut.blocks.testcontainer.TestContainerBlock;
 import mcjty.modtut.blocks.testcontainer.TestContainerTileEntity;
 import mcjty.modtut.compat.MainCompatHandler;
+import mcjty.modtut.handlers.CommonHandlers;
 import mcjty.modtut.items.FirstItem;
 import mcjty.modtut.items.ItemNew;
 import mcjty.modtut.items.MultiModelItem;
 import mcjty.modtut.items.SimpleTexturedItem;
+import mcjty.modtut.items.Wand1;
 import mcjty.modtut.network.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,8 +48,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import java.io.File;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -60,12 +77,6 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(ModTut.instance, new GuiProxy());
     }
 
-    public void postInit(FMLPostInitializationEvent e) {
-        if (config.hasChanged()) {
-            config.save();
-        }
-    }
-
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().register(new StateTexturedBlock());
@@ -80,11 +91,15 @@ public class CommonProxy {
         event.getRegistry().register(new PedestalBlock());
         event.getRegistry().register(new NLetterBlock());
         event.getRegistry().register(new JadeBlock());
+		event.getRegistry().register(new NLetterBlock());
+		event.getRegistry().register(new Ab());
+		event.getRegistry().register(new LightningTrap());
+		event.getRegistry().register(new SilverBlock());
         
-        GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
-        GameRegistry.registerTileEntity(TestContainerTileEntity.class, ModTut.MODID + "_testcontainerblock");
-        GameRegistry.registerTileEntity(DataTileEntity.class, ModTut.MODID + "_datablock");
-        GameRegistry.registerTileEntity(PedestalTileEntity.class, ModTut.MODID + "_pedestalblock");
+   		GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
+		GameRegistry.registerTileEntity(TestContainerTileEntity.class, ModTut.MODID + "_testcontainerblock");
+		GameRegistry.registerTileEntity(DataTileEntity.class, ModTut.MODID + "_datablock");
+		GameRegistry.registerTileEntity(PedestalTileEntity.class, ModTut.MODID + "_pedestalblock");
     }
 
     @SubscribeEvent
@@ -93,18 +108,31 @@ public class CommonProxy {
         event.getRegistry().register(new SimpleTexturedItem());
         event.getRegistry().register(new MultiModelItem());
         event.getRegistry().register(new ItemNew());
-        
-        event.getRegistry().register(new ItemBlock(ModBlocks.stateTexturedBlock).setRegistryName(ModBlocks.stateTexturedBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.blinkingBlock).setRegistryName(ModBlocks.blinkingBlock.getRegistryName()));
-        //event.getRegistry().register(new ItemBlock(ModBlocks.firstBlock).setRegistryName(ModBlocks.firstBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.simpleTexturedBlock).setRegistryName(ModBlocks.simpleTexturedBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.multiTexturedBlock).setRegistryName(ModBlocks.multiTexturedBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.bakedModelBlock).setRegistryName(ModBlocks.bakedModelBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.testContainerBlock).setRegistryName(ModBlocks.testContainerBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.dataBlock).setRegistryName(ModBlocks.dataBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.modelBlock).setRegistryName(ModBlocks.modelBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.pedestalBlock).setRegistryName(ModBlocks.pedestalBlock.getRegistryName()));
+		event.getRegistry().register(new Wand1());
+		event.getRegistry().register(new ItemBlock(ModBlocks.ab).setRegistryName(ModBlocks.ab.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.lightningtrap).setRegistryName(ModBlocks.lightningtrap.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.stateTexturedBlock).setRegistryName(ModBlocks.stateTexturedBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.blinkingBlock).setRegistryName(ModBlocks.blinkingBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.firstBlock).setRegistryName(ModBlocks.firstBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.simpleTexturedBlock).setRegistryName(ModBlocks.simpleTexturedBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.multiTexturedBlock).setRegistryName(ModBlocks.multiTexturedBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.bakedModelBlock).setRegistryName(ModBlocks.bakedModelBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.testContainerBlock).setRegistryName(ModBlocks.testContainerBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.dataBlock).setRegistryName(ModBlocks.dataBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.modelBlock).setRegistryName(ModBlocks.modelBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.pedestalBlock).setRegistryName(ModBlocks.pedestalBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ModBlocks.silverBlock).setRegistryName(ModBlocks.silverBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.jadeBlock).setRegistryName(ModBlocks.jadeBlock.getRegistryName())); 
     }
+
+	public void postInit(FMLPostInitializationEvent e) {
+		if (config.hasChanged()) {
+			config.save();
+			
+		}
+		MinecraftForge.EVENT_BUS.register(new CommonHandlers());
+	}
+
+	
 
 }

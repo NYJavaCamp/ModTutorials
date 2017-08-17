@@ -1,6 +1,14 @@
 package mcjty.modtut;
 
-import mcjty.modtut.blocks.*;
+import mcjty.modtut.blocks.Ab;
+import mcjty.modtut.blocks.FirstBlock;
+import mcjty.modtut.blocks.JadeBlock;
+import mcjty.modtut.blocks.LightningTrap;
+import mcjty.modtut.blocks.ModelBlock;
+import mcjty.modtut.blocks.MultiTexturedBlock;
+import mcjty.modtut.blocks.SilverBlock;
+import mcjty.modtut.blocks.SimpleTexturedBlock;
+import mcjty.modtut.blocks.StateTexturedBlock;
 import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
 import mcjty.modtut.blocks.blinkingblock.BlinkingBlock;
 import mcjty.modtut.blocks.datablock.DataBlock;
@@ -48,6 +56,9 @@ public class ModBlocks {
 
     @GameRegistry.ObjectHolder("modtut:statetexturedblock")
     public static StateTexturedBlock stateTexturedBlock;
+    
+    @GameRegistry.ObjectHolder("modtut:silverblock")
+    public static SilverBlock silverBlock;
 
     @GameRegistry.ObjectHolder("modtut:jadeblock")
     public static JadeBlock jadeBlock; 
@@ -63,12 +74,11 @@ public class ModBlocks {
         blinkingBlock.initModel();
         pedestalBlock.initModel();
         testContainerBlock.initModel();
-<<<<<<< HEAD
         jadeBlock.initModel();
-=======
         ab.initModel();
         lightningtrap.initModel();
->>>>>>> 47df8a1e51919595cd77e503c26ce3cf6f1f79b9
+        silverBlock.initModel();   
+
     }
 
     @SideOnly(Side.CLIENT)
