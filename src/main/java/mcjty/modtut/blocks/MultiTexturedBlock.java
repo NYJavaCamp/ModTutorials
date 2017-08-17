@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -8,13 +9,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -24,10 +23,8 @@ public class MultiTexturedBlock extends Block {
 
     public MultiTexturedBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("multitexturedblock");
+        setUnlocalizedName(ModTut.MODID + ".multitexturedblock");
         setRegistryName("multitexturedblock");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

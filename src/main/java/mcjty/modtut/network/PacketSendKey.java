@@ -20,14 +20,14 @@ public class PacketSendKey implements IMessage {
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        blockPos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+        // Encoding the position as a long is more efficient
+        blockPos = BlockPos.fromLong(buf.readLong());
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
-        buf.writeInt(blockPos.getX());
-        buf.writeInt(blockPos.getY());
-        buf.writeInt(blockPos.getZ());
+        // Encoding the position as a long is more efficient
+        buf.writeLong(blockPos.toLong());
     }
 
     public PacketSendKey() {
@@ -49,10 +49,14 @@ public class PacketSendKey implements IMessage {
 
         private void handle(PacketSendKey message, MessageContext ctx) {
             // This code is run on the server side. So you can do server-side calculations here
-            EntityPlayerMP playerEntity = ctx.getServerHandler().playerEntity;
-            World world = playerEntity.worldObj;
-            Block block = world.getBlockState(message.blockPos).getBlock();
-            playerEntity.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()));
+            EntityPlayerMP playerEntity = ctx.getServerHandler().player;
+            World world = playerEntity.getEntityWorld();
+            // Check if the block (chunk) is loaded to prevent abuse from a client
+            // trying to overload a server by randomly loading chunks
+            if (world.isBlockLoaded(message.blockPos)) {
+                Block block = world.getBlockState(message.blockPos).getBlock();
+                playerEntity.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Hit block: " + block.getRegistryName()), false);
+            }
         }
     }
 }

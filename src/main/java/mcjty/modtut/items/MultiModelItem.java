@@ -1,5 +1,6 @@
 package mcjty.modtut.items;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,8 +20,7 @@ public class MultiModelItem extends Item {
 
     public MultiModelItem() {
         setRegistryName("multimodelitem");
-        setUnlocalizedName("multimodelitem");
-        GameRegistry.register(this);
+        setUnlocalizedName(ModTut.MODID + ".multimodelitem");
     }
 
     @SideOnly(Side.CLIENT)
@@ -44,7 +44,8 @@ public class MultiModelItem extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer playerIn, EnumHand hand) {
+        ItemStack stack = playerIn.getHeldItem(hand);
         if (!world.isRemote) {
             if (isBlue(stack)) {
                 getTagCompoundSafe(stack).removeTag("blue");

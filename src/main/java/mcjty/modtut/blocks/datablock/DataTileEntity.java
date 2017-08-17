@@ -19,6 +19,10 @@ public class DataTileEntity extends TileEntity {
         return counter;
     }
 
+    public int getCounter() {
+        return counter;
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
@@ -26,8 +30,9 @@ public class DataTileEntity extends TileEntity {
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("counter", counter);
+        return compound;
     }
 }

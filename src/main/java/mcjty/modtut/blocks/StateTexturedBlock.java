@@ -1,5 +1,6 @@
 package mcjty.modtut.blocks;
 
+import mcjty.modtut.ModTut;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -9,13 +10,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,10 +26,8 @@ public class StateTexturedBlock extends Block {
 
     public StateTexturedBlock() {
         super(Material.ROCK);
-        setUnlocalizedName("statetexturedblock");
+        setUnlocalizedName(ModTut.MODID + ".statetexturedblock");
         setRegistryName("statetexturedblock");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
@@ -40,8 +37,9 @@ public class StateTexturedBlock extends Block {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
+
     @Override
-    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock) {
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos p_189540_5_) {
         int powered = world.isBlockIndirectlyGettingPowered(pos);
         world.setBlockState(pos, state.withProperty(ENABLED, powered > 0), 3);
     }
