@@ -91,7 +91,6 @@ public class CommonProxy {
         event.getRegistry().register(new PedestalBlock());
         event.getRegistry().register(new NLetterBlock());
         event.getRegistry().register(new JadeBlock());
-		event.getRegistry().register(new NLetterBlock());
 		event.getRegistry().register(new Ab());
 		event.getRegistry().register(new LightningTrap());
 		event.getRegistry().register(new SilverBlock());
@@ -123,6 +122,8 @@ public class CommonProxy {
 		event.getRegistry().register(new ItemBlock(ModBlocks.pedestalBlock).setRegistryName(ModBlocks.pedestalBlock.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(ModBlocks.silverBlock).setRegistryName(ModBlocks.silverBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.jadeBlock).setRegistryName(ModBlocks.jadeBlock.getRegistryName())); 
+        event.getRegistry().register(new ItemBlock(ModBlocks.nLetter).setRegistryName(ModBlocks.nLetter.getRegistryName())); 
+
     }
 
 	public void postInit(FMLPostInitializationEvent e) {

@@ -6,6 +6,7 @@ import mcjty.modtut.blocks.JadeBlock;
 import mcjty.modtut.blocks.LightningTrap;
 import mcjty.modtut.blocks.ModelBlock;
 import mcjty.modtut.blocks.MultiTexturedBlock;
+import mcjty.modtut.blocks.NLetterBlock;
 import mcjty.modtut.blocks.SilverBlock;
 import mcjty.modtut.blocks.SimpleTexturedBlock;
 import mcjty.modtut.blocks.StateTexturedBlock;
@@ -32,6 +33,8 @@ public class ModBlocks {
     @GameRegistry.ObjectHolder("modtut:ab")
     public static Ab ab;
     
+    @GameRegistry.ObjectHolder("modtut:nletter")
+    public static NLetterBlock nLetter;
     
     @GameRegistry.ObjectHolder("modtut:lightningtrap")
     public static LightningTrap lightningtrap;
@@ -78,6 +81,7 @@ public class ModBlocks {
         ab.initModel();
         lightningtrap.initModel();
         silverBlock.initModel();   
+        nLetter.initModel();  
 
     }
 

@@ -10,7 +10,7 @@ public class FirstBlock extends Block {
 
     public FirstBlock() {
         super(Material.CLAY);
-        setUnlocalizedName(ModTut.MODID + ".fleshblock");
-        setRegistryName("fleshblock");
+        setUnlocalizedName(ModTut.MODID + ".firstblock");
+        setRegistryName("firstblock");
     }
 }
