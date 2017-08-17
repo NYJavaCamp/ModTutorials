@@ -9,8 +9,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class FirstBlock extends Block {
 
     public FirstBlock() {
-        super(Material.ROCK);
-        setUnlocalizedName(ModTut.MODID + ".firstblock");
-        setRegistryName("firstblock");
+        super(Material.CLAY);
+        setUnlocalizedName(ModTut.MODID + ".fleshblock");
+        setRegistryName("fleshblock");
     }
 }

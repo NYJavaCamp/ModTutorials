@@ -13,6 +13,7 @@ import mcjty.modtut.blocks.testcontainer.TestContainerBlock;
 import mcjty.modtut.blocks.testcontainer.TestContainerTileEntity;
 import mcjty.modtut.compat.MainCompatHandler;
 import mcjty.modtut.items.FirstItem;
+import mcjty.modtut.items.ItemNew;
 import mcjty.modtut.items.MultiModelItem;
 import mcjty.modtut.items.SimpleTexturedItem;
 import mcjty.modtut.network.PacketHandler;
@@ -78,7 +79,8 @@ public class CommonProxy {
         event.getRegistry().register(new ModelBlock());
         event.getRegistry().register(new PedestalBlock());
         event.getRegistry().register(new NLetterBlock());
-
+        event.getRegistry().register(new JadeBlock());
+        
         GameRegistry.registerTileEntity(BlinkingTileEntity.class, ModTut.MODID + "_blinkingblock");
         GameRegistry.registerTileEntity(TestContainerTileEntity.class, ModTut.MODID + "_testcontainerblock");
         GameRegistry.registerTileEntity(DataTileEntity.class, ModTut.MODID + "_datablock");
@@ -90,10 +92,11 @@ public class CommonProxy {
         event.getRegistry().register(new FirstItem());
         event.getRegistry().register(new SimpleTexturedItem());
         event.getRegistry().register(new MultiModelItem());
-
+        event.getRegistry().register(new ItemNew());
+        
         event.getRegistry().register(new ItemBlock(ModBlocks.stateTexturedBlock).setRegistryName(ModBlocks.stateTexturedBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.blinkingBlock).setRegistryName(ModBlocks.blinkingBlock.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(ModBlocks.firstBlock).setRegistryName(ModBlocks.firstBlock.getRegistryName()));
+        //event.getRegistry().register(new ItemBlock(ModBlocks.firstBlock).setRegistryName(ModBlocks.firstBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.simpleTexturedBlock).setRegistryName(ModBlocks.simpleTexturedBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.multiTexturedBlock).setRegistryName(ModBlocks.multiTexturedBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.bakedModelBlock).setRegistryName(ModBlocks.bakedModelBlock.getRegistryName()));
@@ -101,6 +104,7 @@ public class CommonProxy {
         event.getRegistry().register(new ItemBlock(ModBlocks.dataBlock).setRegistryName(ModBlocks.dataBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.modelBlock).setRegistryName(ModBlocks.modelBlock.getRegistryName()));
         event.getRegistry().register(new ItemBlock(ModBlocks.pedestalBlock).setRegistryName(ModBlocks.pedestalBlock.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(ModBlocks.jadeBlock).setRegistryName(ModBlocks.jadeBlock.getRegistryName())); 
     }
 
 }

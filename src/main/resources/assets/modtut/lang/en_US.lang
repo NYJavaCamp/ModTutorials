@@ -9,10 +9,12 @@ tile.modtut.blinkingblock.name=Blinking Block
 tile.modtut.blinkingblock_lit.name=Blinking Block
 tile.modtut.pedestalblock.name=Pedestal Block
 tile.modtut.testcontainerblock.name=Test Container Block
+tile.modtut.jadeblock.name=Jade Block
 
 item.modtut.firstitem.name=First Item
 item.modtut.simpletextureditem.name=Simple Textured Item
 item.modtut.multimodelitem.name=Multi Model Item
+item.modtut.itemnew.name=Bowl of Rice
 
 message.modtut.counter=Counter:
 message.modtut.counter_par=Counter: %d

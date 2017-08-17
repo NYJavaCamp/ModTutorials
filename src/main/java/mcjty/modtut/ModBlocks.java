@@ -42,6 +42,9 @@ public class ModBlocks {
     @GameRegistry.ObjectHolder("modtut:statetexturedblock")
     public static StateTexturedBlock stateTexturedBlock;
 
+    @GameRegistry.ObjectHolder("modtut:jadeblock")
+    public static JadeBlock jadeBlock; 
+   
     @SideOnly(Side.CLIENT)
     public static void initModels() {
         simpleTexturedBlock.initModel();
@@ -53,6 +56,7 @@ public class ModBlocks {
         blinkingBlock.initModel();
         pedestalBlock.initModel();
         testContainerBlock.initModel();
+        jadeBlock.initModel();
     }
 
     @SideOnly(Side.CLIENT)
