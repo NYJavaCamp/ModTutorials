@@ -17,9 +17,16 @@ public class ModBlocks {
 
     @GameRegistry.ObjectHolder("modtut:simpletexturedblock")
     public static SimpleTexturedBlock simpleTexturedBlock;
-
+    
     @GameRegistry.ObjectHolder("modtut:multitexturedblock")
     public static MultiTexturedBlock multiTexturedBlock;
+
+    @GameRegistry.ObjectHolder("modtut:ab")
+    public static Ab ab;
+    
+    
+    @GameRegistry.ObjectHolder("modtut:lightningtrap")
+    public static LightningTrap lightningtrap;
 
     @GameRegistry.ObjectHolder("modtut:modelblock")
     public static ModelBlock modelBlock;
@@ -56,7 +63,12 @@ public class ModBlocks {
         blinkingBlock.initModel();
         pedestalBlock.initModel();
         testContainerBlock.initModel();
+<<<<<<< HEAD
         jadeBlock.initModel();
+=======
+        ab.initModel();
+        lightningtrap.initModel();
+>>>>>>> 47df8a1e51919595cd77e503c26ce3cf6f1f79b9
     }
 
     @SideOnly(Side.CLIENT)
