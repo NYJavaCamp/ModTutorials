@@ -13,6 +13,7 @@ import mcjty.modtut.blocks.LightningTrap;
 import mcjty.modtut.blocks.ModelBlock;
 import mcjty.modtut.blocks.MultiTexturedBlock;
 import mcjty.modtut.blocks.NLetterBlock;
+import mcjty.modtut.blocks.SilverBlock;
 import mcjty.modtut.blocks.SimpleTexturedBlock;
 import mcjty.modtut.blocks.StateTexturedBlock;
 import mcjty.modtut.blocks.bakedmodel.BakedModelBlock;
@@ -26,9 +27,11 @@ import mcjty.modtut.blocks.itempedestal.PedestalTileEntity;
 import mcjty.modtut.blocks.testcontainer.TestContainerBlock;
 import mcjty.modtut.blocks.testcontainer.TestContainerTileEntity;
 import mcjty.modtut.compat.MainCompatHandler;
+import mcjty.modtut.handlers.CommonHandlers;
 import mcjty.modtut.items.FirstItem;
 import mcjty.modtut.items.MultiModelItem;
 import mcjty.modtut.items.SimpleTexturedItem;
+import mcjty.modtut.items.Wand1;
 import mcjty.modtut.network.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -77,7 +80,7 @@ public class CommonProxy {
 			config.save();
 			
 		}
-		MinecraftForge.EVENT_BUS.register(new LightningTrapHandler());
+		MinecraftForge.EVENT_BUS.register(new CommonHandlers());
 	}
 
 	@SubscribeEvent

@@ -12,7 +12,7 @@ import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber
+
 public class LightningTrapHandler {
 
 	@SubscribeEvent
@@ -28,12 +28,7 @@ public class LightningTrapHandler {
 
 	}
 
-	@SubscribeEvent
-	public void sendMessage(PlayerInteractEvent event) {
-		event.getEntityPlayer()
-				.sendMessage(new TextComponentString(ChatFormatting.GOLD + event);
 
-	}
 
 	@SubscribeEvent
 	public void sendMessage(BreakEvent event) {
